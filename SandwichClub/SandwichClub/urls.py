@@ -19,5 +19,11 @@ from SandwichClub_app import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.test, name='test'),
+    url(r'^$', views.index, name='index'),
+	url(r'^index/', views.index, name='index'),
+	url(r'^login/', views.login, name='login'),
+	url(r'^profile/', views.profile, name='profile'),
+	url(r'^register/', views.register, name='register'),
+	url(r'^categories/', views.categories, name='categories'),
+	url(r'^about/', views.about, name='about'),
 ]
