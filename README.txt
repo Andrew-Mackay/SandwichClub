@@ -14,4 +14,4 @@ Melvin:
 
 George:
 	HTML/CSS
-	
+	Home/index page, about page
