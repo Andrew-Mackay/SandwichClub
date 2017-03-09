@@ -4,7 +4,11 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    context_dict = {} #what context is needed?
+    context_dict = {}
+    """ context needed (?)
+        Sandwich of the week
+        popular sandwiches/users/idk
+    """
     response = render(request, 'index.html', context=context_dict)
     return response
 
