@@ -134,7 +134,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 # If True, the user will be automatically logged in after registering.
 REGISTRATION_AUTO_LOGIN = True
 # The page users arrive at after they successfully log in
-LOGIN_REDIRECT_URL = '/SandwichClub/'
+LOGIN_REDIRECT_URL = '/SandwichClub_app/'
 # The page users are directed to if they are not logged in,
 # and are trying to access pages requiring authentication
 LOGIN_URL = '/accounts/login/'
