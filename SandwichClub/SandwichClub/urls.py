@@ -14,16 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf.urls import include
 from django.contrib import admin
+from registration.backends.simple.views import RegistrationView
 from SandwichClub_app import views
 
+class MyRegistrationView(RegistrationView):
+	def get_success_url(self, user):
+		return '/SandwichClub_app'
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
-	url(r'^index/', views.index, name='index'),
-	url(r'^login/', views.login, name='login'),
-	url(r'^profile/', views.profile, name='profile'),
-	url(r'^register/', views.register, name='register'),
-	url(r'^categories/', views.categories, name='categories'),
-	url(r'^about/', views.about, name='about'),
+	url(r'^SandwichClub_app/', include('SandwichClub_app.urls')),
+	url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
+    url(r'^admin/', admin.site.urls),
+	url(r'^accounts/', include('registration.backends.simple.urls')), # change 'simple' to 'default' for two step authentication
+	# to register now visit accounts/register/ 
+	# to login once activated visit accounts/login/ 
 ]
+
