@@ -13,11 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url
 from django.conf.urls import include
 from django.contrib import admin
 from registration.backends.simple.views import RegistrationView
 from SandwichClub_app import views
+from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -28,5 +31,5 @@ urlpatterns = [
 	url(r'^accounts/', include('registration.backends.simple.urls')), # change 'simple' to 'default' for two step authentication
 	# to register now visit accounts/register/ 
 	# to login once activated visit accounts/login/ 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
