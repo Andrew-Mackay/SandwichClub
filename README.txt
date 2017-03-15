@@ -15,3 +15,5 @@ Melvin:
 George:
 	HTML/CSS
 	Home/index page, about page
+
+***Remember to change security key when actually deploying web app***
