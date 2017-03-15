@@ -19,13 +19,11 @@ from django.contrib import admin
 from registration.backends.simple.views import RegistrationView
 from SandwichClub_app import views
 
-class MyRegistrationView(RegistrationView):
-	def get_success_url(self, user):
-		return '/SandwichClub_app'
+
 urlpatterns = [
     url(r'^$', views.index, name='index'),
 	url(r'^SandwichClub_app/', include('SandwichClub_app.urls')),
-	url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
+	url(r'^accounts/register/$', views.MyRegistrationView.as_view(), name='registration_register'),
     url(r'^admin/', admin.site.urls),
 	url(r'^accounts/', include('registration.backends.simple.urls')), # change 'simple' to 'default' for two step authentication
 	# to register now visit accounts/register/ 
