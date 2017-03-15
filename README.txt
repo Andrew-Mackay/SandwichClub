@@ -6,7 +6,8 @@ Miles:
 
 Andrew:
 	user auth (registration and login pages)
-	unit testing
+	profile page
+	unit testing?
 
 Melvin:
 	AJAX/Js	
