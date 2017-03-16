@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+import uuid
 
 # Create your models here.
 class UserProfile(models.Model):
@@ -22,9 +23,8 @@ class UserProfile(models.Model):
 
 #I'm not sure if I'm doing this right -miles
 class Sandwich(models.Model):
-	next_id = 1
-	sid = models.IntegerField(primary_key=True,default=next_id)
-	next_id += 1
+	#generates a unique id for each sandwich
+	sid = models.CharField(primary_key=True,unique=True,max_length=10,default=uuid.uuid4)
 
 	# maker of sandwich
 	#maker = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
