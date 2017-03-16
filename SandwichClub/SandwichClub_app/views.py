@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from registration.backends.simple.views import RegistrationView
 from django.core.urlresolvers import reverse
-from SandwichClub_app.forms import UserProfileForm
+from SandwichClub_app.forms import *
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from SandwichClub_app.models import *
@@ -23,11 +23,28 @@ def index(request):
 def login(request):
 	return HttpResponse("Login page")
 
-#def profile(request):
-	#return HttpResponse("Profile page")
+#@login_required
+def create_sandwich(request):
+    form = SandwichForm()
+    #return render(request, 'create_sandwich.html', context={'thing':'thing'})
+    if request.method == 'POST':
+        form = SandwichForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_sandwich = form.save(commit=False)
+            new_sandwich.save()
+            return redirect('sandwich',new_sandwich.sid)
+        else:
+            print(form.errors)
 
-def sandwich(request,sandwichname):
-    sandwich = Sandwich(title=sandwichname)
+    context_dict = {'form':form}
+    return render(request, 'create_sandwich.html', context=context_dict)
+
+
+def sandwich(request,sid):
+    try:
+        sandwich = Sandwich.objects.get(sid=sid)
+    except Sandwich.DoesNotExist:
+        return render(request, 'sandwich.html', context={'dne':'True'})
 
     context_dict = {'sandwich':sandwich}
     return render(request, 'sandwich.html', context=context_dict )

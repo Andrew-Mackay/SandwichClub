@@ -5,6 +5,21 @@
 {% endblock %}
 
 {% block body_block %}
-<h2>{{ sandwich.title }}</h2>
-
+{% if dne %}
+    <div id="dne" style="text-align:center;font-size:32px">
+        <br />
+        Sandwich not found!<br /> Would you like to
+        <a href="{% url 'create_sandwich' %}">make one?</a>
+        <br /><br />
+    </div>
+{% else %}
+    <div id="sandwich-title-desc">
+        <h2>{{ sandwich.title }}</h2>
+        <hr />
+        <p>{{ sandwich.description }}</p>
+    </div>
+    <div id="sandwich-recipe">
+        {{ sandwich.recipe }}
+    </div>
+{% endif %}
 {% endblock %}

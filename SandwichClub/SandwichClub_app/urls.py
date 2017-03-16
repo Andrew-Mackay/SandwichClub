@@ -8,5 +8,6 @@ urlpatterns = [
 	url(r'^about/', views.about, name='about'),
 	url(r'^register_profile/$', views.register_profile, name='register_profile'),
 	url(r'^profile/(?P<username>[\w\-]+)/$', views.profile, name='profile'),
-	url(r'^sandwich/(?P<sandwichname>[\w\-]+)$', views.sandwich, name='sandwich'),
+	url(r'^create_sandwich/$', views.create_sandwich, name='create_sandwich'),
+	url(r'^sandwich/(?P<sid>[\w\-]+)$', views.sandwich, name='sandwich'),
 ]

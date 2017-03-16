@@ -6,7 +6,7 @@
 
 {% block body_block %}
 	<h1>Registration - Step 2</h1>
-	<form method="post" action="." enctypes="multipart/forms-date">
+	<form method="post" action="." enctypes="multipart/forms-data">
 		{% csrf_token %}
 		{{ form.as_p }}
 		<input type="submit" value="Submit" />

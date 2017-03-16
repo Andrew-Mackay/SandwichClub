@@ -1,16 +1,20 @@
 .footerLinks{
 	padding: 0;
-	
+
 }
 .footerLinks ul{
 	float: left;
 	padding-left: 150px;
 	list-style: none;
 	text-decoration: none;
-	
+
 }
 .footerLinks ul ul li{
 	text-align:left;
 	color:#ccc;
-	
+
+}
+
+#sandwich-title-desc{
+	border: 2px solid red;
 }
