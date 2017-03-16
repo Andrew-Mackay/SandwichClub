@@ -25,6 +25,9 @@ class Sandwich(models.Model):
 	# Title of the sandwich, as a string
 	title = models.CharField(max_length=100)
 
+	# maker of sandwich
+	maker = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+	
 	# Recipe of the sandwich, stored as a string of comma
 	# separated ingredients (without any spaces).
 	# Ex: "br,lt,tm,bc,ma,br" is, from bottom to top,
