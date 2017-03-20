@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="http://v4-alpha.getbootstrap.com/favicon.ico">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-    
+
     <title>{% block title %}{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
@@ -22,7 +22,7 @@
   <body>
   <div class="container">
     <!--NAVBAR STYLING-->
-   
+
 
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/SandwichClub/about">About</a>
           </li>
-        
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sandwiches</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -48,7 +48,7 @@
               <a class="dropdown-item" href="#">More...</a>
             </div>
             </li>
-		
+
 		{% if user.is_authenticated %}
 		 <li class="nav-item">
             <a class="nav-link" href="{% url 'create_sandwich' %}">Create Sandwich</a>
@@ -64,7 +64,7 @@
 		<li class="nav-item">
 			<a class="nav-link" href="/accounts/register">Register</a>
 		</li>
-        
+
 		{% endif %}
 		</ul>
         <form class="form-inline my-2 my-lg-0" action = "/SandwichClub_app/search/">
@@ -74,8 +74,8 @@
       </div>
     </nav>
 	</div>
-	
-	
+
+
     <div class="container">
     	<hr>
       	<div class="content">
@@ -109,12 +109,12 @@
 
         </ul>
         </ul>
-        
+
         </div>
       </footer>
-     
-    </div> 
-    
+
+    </div>
+
 
 
     <!-- Bootstrap core JavaScript
