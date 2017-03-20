@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+from django.utils import timezone
 
 # Create your models here.
 class UserProfile(models.Model):
@@ -43,7 +44,14 @@ class Sandwich(models.Model):
 	picture = models.ImageField(upload_to='sandwich_images',blank=True)
 	rating = models.IntegerField(default=5) #out of 5(?)
 
+	#Date user created the sandwich used to get the latest sandwich
+	created =  models.DateTimeField(default=timezone.now)
+
+	
 	def title_slug(self):
 		return self.title.lower().replace(" ","-")
+
+	def __unicode__(self):
+		return self.title
 
 	# methods to be implemented

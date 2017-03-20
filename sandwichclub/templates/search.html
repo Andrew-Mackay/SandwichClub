@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+
+<h1>Search results</h1>
+
+<form class="form-inline my-2 my-lg-0" action="/SandwichClub_app/search/">
+<input class="form-control mr-sm-2" name ="query" type="text" placeholder="Search" value ="{{request.GET.query}}" />
+<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+{% if sandwiches %}
+
+{% for sandwich in sandwiches %}
+<div>
+<a href ="/SandwichClub_app/sandwich/{{sandwich.sid}}" >{{ sandwich.title }}</a><br>
+<p>{{ sandwich.description }}</p><br>
+</div>
+{% endfor %}
+
+{% else %}
+
+<div>
+<p>No such sandwich found.</p>
+</div>
+
+{% endif %}
+{% endblock %}

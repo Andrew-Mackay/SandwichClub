@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+
+<div>
+<h1>Latest Sandwiches</h1>
+</div>
+
+{% if latest %}
+
+{% for sandwich in latest%}
+<div>
+<a href ="/SandwichClub_app/sandwich/{{sandwich.sid}}" >{{ sandwich.title }}</a><br>
+<p>{{ sandwich.description }}</p><br>
+</div>
+{% endfor %}
+
+{% else %}
+	<div>
+		<strong>No sandwiches uploaded recently.</strong>
+	</div>
+{% endif %}
+
+
+{% endblock %}

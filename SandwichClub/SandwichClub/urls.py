@@ -28,7 +28,8 @@ urlpatterns = [
 	url(r'^SandwichClub_app/', include('SandwichClub_app.urls')),
 	url(r'^accounts/register/$', views.MyRegistrationView.as_view(), name='registration_register'),
     url(r'^admin/', admin.site.urls),
-	url(r'^accounts/', include('registration.backends.simple.urls')), # change 'simple' to 'default' for two step authentication
+	url(r'^accounts/', include('registration.backends.simple.urls')),
+    # change 'simple' to 'default' for two step authentication
 	# to register now visit accounts/register/ 
 	# to login once activated visit accounts/login/ 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

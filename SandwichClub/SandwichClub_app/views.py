@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from registration.backends.simple.views import RegistrationView
@@ -7,7 +7,8 @@ from SandwichClub_app.forms import *
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from SandwichClub_app.models import *
-
+from django.db.models import Q
+import random
 
 # Create your views here.
 
@@ -48,6 +49,36 @@ def sandwich(request,sid):
 
     context_dict = {'sandwich':sandwich}
     return render(request, 'sandwich.html', context=context_dict )
+
+def search(request):
+    query = request.GET.get('query')
+    sandwich = Sandwich.objects.filter(
+        Q(title__icontains =query) |
+        Q(description__icontains =query)|
+        Q(recipe__icontains =query)
+        ).distinct()
+    context_dict = {'sandwiches':sandwich}
+	
+    return render(request, 'search.html', context=context_dict)
+
+def top_ten(request):
+    ranking = Sandwich.objects.order_by('-rating')[:10]
+    context_dict= {'rankings': ranking}
+
+    return render(request, 'top_ten.html', context=context_dict)
+
+def latest(request):
+    recent = Sandwich.objects.order_by('-created')[:5]
+    context_dict= {'latest': recent}
+
+    return render(request, 'latest.html', context=context_dict)
+
+def randomsando(request):
+    idlist = Sandwich.objects.values_list('sid',flat = True)
+    randid = random.choice(idlist)
+    randsandwich = Sandwich.objects.get(sid=randid)
+
+    return redirect(randsandwich)
 
 def register(request):
 	return HttpResponse("Registration page")
