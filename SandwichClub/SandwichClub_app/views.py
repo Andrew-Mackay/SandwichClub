@@ -26,7 +26,7 @@ def index(request):
 def login(request):
 	return HttpResponse("Login page")
 
-#@login_required
+@login_required
 def create_sandwich(request):
     form = SandwichForm()
     #return render(request, 'create_sandwich.html', context={'thing':'thing'})
@@ -34,6 +34,12 @@ def create_sandwich(request):
         form = SandwichForm(request.POST, request.FILES)
         if form.is_valid():
             new_sandwich = form.save(commit=False)
+            #user = request.user
+            userprofile = UserProfile.objects.get(user=request.user)
+            print userprofile
+            new_sandwich.maker = userprofile
+            #print new_sandwich
+            print new_sandwich.maker
             new_sandwich.save()
             return redirect('sandwich',new_sandwich.sid)
         else:

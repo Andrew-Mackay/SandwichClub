@@ -28,7 +28,7 @@ class Sandwich(models.Model):
 	sid = models.CharField(primary_key=True,unique=True,max_length=10,default=uuid.uuid4)
 	
 	# maker of sandwich
-	#maker = models.ForeignKey(UserProfile.user, on_delete=models.CASCADE)
+	maker = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 	#commented out because migrations were failing
 
 	title = models.CharField(max_length=100)

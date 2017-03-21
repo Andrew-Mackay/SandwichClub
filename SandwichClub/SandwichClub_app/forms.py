@@ -15,4 +15,4 @@ class SandwichForm(forms.ModelForm):
 
     class Meta:
         model = Sandwich
-        exclude = ('sid', 'rating','picture','created')
+        exclude = ('sid', 'rating','picture','created', 'maker')
