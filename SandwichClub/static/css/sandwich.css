@@ -25,6 +25,12 @@
 	margin-left:auto;
 	margin-right:auto;
 }
+.sandwich-photo{
+	width:250px;
+	height:250px;
+	margin-right:2px;
+	margin-left:2px;
+}
 #sandwich-recipe{
 	width:38%;
 	min-height:500px;
@@ -37,7 +43,6 @@
 .ingredient{
     width:90%;
     height:90px;
-    border:1px solid red;
     margin-left:auto;
     margin-right:auto;
     margin-bottom:2px;
@@ -45,4 +50,9 @@
     text-align:center;
     line-height:90px;
     font-size:24pt;
+	overflow:hidden;
+}
+.ingredient img{
+	width:100%;
+	height:inherit;
 }
