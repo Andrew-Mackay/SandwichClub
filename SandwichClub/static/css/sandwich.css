@@ -1,0 +1,48 @@
+#sandwich-info{
+	width:60%;
+	min-height:500px;
+	margin-right:1.5%;
+	display:inline-block;
+	vertical-align:top;
+}
+#sandwich-info div{
+	width:100%;
+	min-height:250px;
+	overflow:scroll;
+}
+#sandwich-info h2{
+	width:100%;
+	text-align:center;
+	margin-top:8px;
+	margin-bottom:-8px;
+}
+#sandwich-info hr{
+	width:85%;
+}
+#sandwich-info p{
+	width:95%;
+	min-height:200px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#sandwich-recipe{
+	width:38%;
+	min-height:500px;
+	display:inline-block;
+	vertical-align:top;
+}
+#recipe{
+    visibility:hidden;
+}
+.ingredient{
+    width:90%;
+    height:90px;
+    border:1px solid red;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:2px;
+    margin-top:2px;
+    text-align:center;
+    line-height:90px;
+    font-size:24pt;
+}
