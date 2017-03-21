@@ -26,7 +26,7 @@ class UserProfile(models.Model):
 class Sandwich(models.Model):
 	#generates a unique id for each sandwich
 	sid = models.CharField(primary_key=True,unique=True,max_length=10,default=uuid.uuid4)
-
+	
 	# maker of sandwich
 	#maker = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 	#commented out because migrations were failing

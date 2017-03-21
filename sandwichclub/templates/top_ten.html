@@ -9,9 +9,9 @@
 
 {% if rankings %}
 
-<ol>
+<ol >
 	{% for sandwich in rankings%}
-	<li>{{ sandwich.title}}</li>
+	<a href="/SandwichClub_app/sandwich/{{sandwich.sid}}"><li id="ranks">{{ sandwich.title}}</li></a>
 	{% endfor %}
 </ol>
 

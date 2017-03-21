@@ -14,9 +14,26 @@
 {% for sandwich in sandwiches %}
 <div>
 <a href ="/SandwichClub_app/sandwich/{{sandwich.sid}}" >{{ sandwich.title }}</a><br>
+<!--<a href ="/SandwichClub_app/profile/{{sandwich.maker.user.username}}" >{{ sandwich.maker.user.username }}</a><br>-->
 <p>{{ sandwich.description }}</p><br>
 </div>
 {% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if sandwiches.has_previous %}
+            <a href="?page={{ sandwiches.previous_page_number }}{% if request.GET.query %}&query={{ request.GET.query}}{% endif %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ sandwiches.number }} of {{ sandwiches.paginator.num_pages }}.
+        </span>
+
+        {% if sandwiches.has_next %}
+            <a href="?page={{ sandwiches.next_page_number }}{% if request.GET.query %}&query={{ request.GET.query}}{% endif %}">next</a>
+        {% endif %}
+    </span>
+</div>
 
 {% else %}
 
@@ -25,4 +42,5 @@
 </div>
 
 {% endif %}
+
 {% endblock %}

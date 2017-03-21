@@ -9,6 +9,8 @@ from django.contrib.auth.models import User
 from SandwichClub_app.models import *
 from django.db.models import Q
 import random
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 # Create your views here.
 
@@ -52,11 +54,24 @@ def sandwich(request,sid):
 
 def search(request):
     query = request.GET.get('query')
-    sandwich = Sandwich.objects.filter(
+    sandwich_list = Sandwich.objects.filter(
         Q(title__icontains =query) |
         Q(description__icontains =query)|
         Q(recipe__icontains =query)
-        ).distinct()
+        ).distinct().order_by("-created")
+
+    paginator = Paginator(sandwich_list, 5) # Show 5 sandos per page
+    page = request.GET.get('page')
+    
+    try:
+        sandwich = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        sandwich = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        sandwich = paginator.page(paginator.num_pages)
+
     context_dict = {'sandwiches':sandwich}
 	
     return render(request, 'search.html', context=context_dict)
@@ -76,9 +91,8 @@ def latest(request):
 def randomsando(request):
     idlist = Sandwich.objects.values_list('sid',flat = True)
     randid = random.choice(idlist)
-    randsandwich = Sandwich.objects.get(sid=randid)
 
-    return redirect(randsandwich)
+    return redirect('sandwich', sid = randid)
 
 def register(request):
 	return HttpResponse("Registration page")

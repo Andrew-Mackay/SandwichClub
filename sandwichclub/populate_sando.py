@@ -1,6 +1,5 @@
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-					  'SandwichClub.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE','SandwichClub.settings')
 
 import django
 django.setup()
