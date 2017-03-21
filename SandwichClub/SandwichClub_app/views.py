@@ -102,7 +102,7 @@ def categories(request):
 
 def about(request):
 	return HttpResponse("About page")
-
+'''
 @login_required
 def register_profile(request):
     form = UserProfileForm()
@@ -120,11 +120,12 @@ def register_profile(request):
     context_dict = {'form':form}
 
     return render(request, 'profile_registration.html', context_dict)
-
+'''
 class MyRegistrationView(RegistrationView):
 	def get_success_url(self, user):
-		return reverse('register_profile')
+		return reverse('index')
 
+		
 @login_required
 def profile(request, username):
     try:
@@ -144,3 +145,6 @@ def profile(request, username):
             print(form.errors)
 
     return render(request, 'profile.html', {'userprofile': userprofile, 'selecteduser': user, 'form': form})
+	
+
+
