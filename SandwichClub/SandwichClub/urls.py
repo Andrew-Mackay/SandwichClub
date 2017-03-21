@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+	url(r'^about', views.about, name='about'),
     url(r'^$', views.index, name='index'),
 	url(r'^SandwichClub_app/', include('SandwichClub_app.urls')),
 	url(r'^accounts/register/$', views.MyRegistrationView.as_view(), name='registration_register'),

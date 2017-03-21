@@ -107,7 +107,8 @@ def categories(request):
 	return HttpResponse("Categories page")
 
 def about(request):
-	return HttpResponse("About page")
+	return render(request, 'about.html')
+    
 '''
 @login_required
 def register_profile(request):
