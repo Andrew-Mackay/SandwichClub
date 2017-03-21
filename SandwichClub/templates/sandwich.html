@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
+{% block includes %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/sandwich.css' %}"/>
+<script src="{% static 'js/sandwich.js' %}"></script>
+{% endblock %}
 
 {% block title_block %}
 {{ sandwich.title }} - Sandwich Club
@@ -6,7 +12,6 @@
 
 {% block body_block %}
 {% if dne %}
-    <!--using inline css for everything bc staticfiles still don't work-->
     <div id="dne" style="text-align:center;font-size:32px">
         <br />
         Sandwich not found!<br /> Would you like to
@@ -15,18 +20,19 @@
     </div>
 {% else %}
     <div> <!-- contains the main body of the sandwich -->
-        <div id="sandwich-title-desc" style="overflow:hidden;width:60%;height:500px;display:inline-block;vertical-align:top;margin-right:1.5%">
-            <h2 style="width:100%;text-align:center;margin-top:8px;margin-bottom:-8px;">{{ sandwich.title }}</h2>
-            <hr style="width:85%;"/>
-            <p style="width:95%;height:40%;margin-left:auto;margin-right:auto;">{{ sandwich.description }}</p>
-            <hr style="width:85%;"/>
-            <div id="sandwich_photos" style="width:100%;min-height:200px;overflow:hidden;">
+        <div id="sandwich-info">
+            <div id="sandwich-title-desc">
+                <h2>{{ sandwich.title }}</h2>
+                <hr/>
+                <p>{{ sandwich.description }}</p>
+            </div>
+            <hr/>
+            <div id="sandwich_photos">
                 !!Sandwich Pictures Go Here!!
             </div>
         </div>
         <div id="sandwich-recipe" style="display:inline-block;width:38%;height:500px;vertical-align:top">
-            !!Sandwich Recipe Goes Here!!
-            {{ sandwich.recipe }}
+            <span id="recipe">{{ sandwich.recipe }}</span>
         </div>
     </div>
     <hr />
