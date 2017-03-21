@@ -1,0 +1,28 @@
+.crop {
+	margin-top: 100px;
+	height: 300px;
+	overflow: hidden;
+	margin: auto;
+	text-align: center;
+}
+
+.crop img{
+	width: 100%;
+	margin-top: -200px;
+	
+}
+#HomeContent{
+	text-align:center;
+	
+}
+#description{
+	padding-top:30px;
+	padding-bottom:30px;
+
+}
+#quickSearch{
+	margin: auto;
+	padding: 0;
+	display: inline-block;
+	padding-top:10px;
+}

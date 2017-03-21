@@ -1,5 +1,40 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
+{% block includes %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/homeStyle.css' %}"/>
+{% endblock %}
+
 {% block body_block %}
-index page
+<body>
+<div class=crop>
+	<img src="{% static 'img/SandwichCover.jpg' %}" alt="Sandwich Cover Art">
+	
+</div>
+
+<div id="HomeContent">
+	<hr />
+	<h1>Welcome to Sandwich Club!</h1>
+	<h5> Find, share and rate sandwiches here! </h5>
+	<div id="quickSearch">
+		<form class="form-inline my-2 my-lg-0" action="/SandwichClub_app/search/">
+		<input class="form-control mr-sm-2" name ="query" type="text" placeholder="Search" value ="{{request.GET.query}}" />
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+	</div>
+	<p id="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+	Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet 
+	quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+	<hr />
+	<p id="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+	Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet 
+	quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+	Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet 
+	quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+	Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet 
+	quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+	
+</div>
+<body>
 {% endblock %}
