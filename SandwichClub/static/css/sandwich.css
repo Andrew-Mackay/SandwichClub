@@ -7,8 +7,6 @@
 }
 #sandwich-info div{
 	width:100%;
-	min-height:250px;
-	overflow:scroll;
 }
 #sandwich-info h2{
 	width:100%;
@@ -21,7 +19,6 @@
 }
 #sandwich-info p{
 	width:95%;
-	min-height:200px;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -30,6 +27,7 @@
 	height:250px;
 	margin-right:2px;
 	margin-left:2px;
+	display:inline-block;
 }
 #sandwich-recipe{
 	width:38%;
@@ -42,17 +40,20 @@
 }
 .ingredient{
     width:90%;
-    height:90px;
+    height:70px;
     margin-left:auto;
     margin-right:auto;
     margin-bottom:2px;
     margin-top:2px;
     text-align:center;
-    line-height:90px;
+    line-height:70px;
     font-size:24pt;
 	overflow:hidden;
 }
 .ingredient img{
 	width:100%;
 	height:inherit;
+}
+#rating{
+	font-size:80%;
 }

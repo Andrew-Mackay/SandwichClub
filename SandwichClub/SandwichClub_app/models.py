@@ -26,7 +26,7 @@ class UserProfile(models.Model):
 class Sandwich(models.Model):
 	#generates a unique id for each sandwich
 	sid = models.CharField(primary_key=True,unique=True,max_length=10,default=uuid.uuid4)
-	
+
 	# maker of sandwich
 	maker = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 	#commented out because migrations were failing
@@ -41,13 +41,13 @@ class Sandwich(models.Model):
 	recipe = models.CharField(max_length=100)
 
 
-	picture = models.ImageField(upload_to='sandwich_images',blank=True)
-	rating = models.IntegerField(default=5) #out of 5(?)
+	picture = models.ImageField(upload_to='sandwich_images',blank=False)
+	rating = models.IntegerField(default=3) #out of 5
 
 	#Date user created the sandwich used to get the latest sandwich
 	created =  models.DateTimeField(default=timezone.now)
 
-	
+
 	def title_slug(self):
 		return self.title.lower().replace(" ","-")
 
