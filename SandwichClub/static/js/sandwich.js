@@ -15,8 +15,10 @@ makeIngredient = function(code){
     var block = document.createElement("div");
     block.className = "ingredient";
 
-    //will be an image at some point
-    block.appendChild(document.createTextNode(ing[code.toString()]));
+    var img = document.createElement("img");
+    img.setAttribute("src","../../static/img/"+ing[code]+".jpg");
+    img.setAttribute("alt",ing[code]);
+    block.appendChild(img);
 
     document.getElementById("sandwich-recipe").appendChild(block);
 }
