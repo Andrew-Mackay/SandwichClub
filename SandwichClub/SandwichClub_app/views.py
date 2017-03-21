@@ -136,7 +136,7 @@ def register_profile(request):
 '''
 class MyRegistrationView(RegistrationView):
 	def get_success_url(self, user):
-		return reverse('index')
+		return reverse('profile', kwargs ={'username': str(user)})
 
 		
 #@login_required
