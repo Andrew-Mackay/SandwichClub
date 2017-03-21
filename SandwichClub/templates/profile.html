@@ -29,7 +29,11 @@
 		    {{userprofile.website}}</a></p>
 	{% endif %}
 </div>
-
+<br>
+Top Fives Sandwiches:<br>
+{% for sandwich in sandwiches %}
+	<a href ="/SandwichClub_app/sandwich/{{sandwich.sid}}" >{{ sandwich.title }}</a><br>
+{% endfor %}
 <div>
 	
 
