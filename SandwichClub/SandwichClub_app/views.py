@@ -133,7 +133,7 @@ class MyRegistrationView(RegistrationView):
 		return reverse('index')
 
 		
-@login_required
+#@login_required
 def profile(request, username):
     try:
         user = User.objects.get(username=username)
@@ -150,8 +150,9 @@ def profile(request, username):
             return redirect('profile', user.username)
         else:
             print(form.errors)
-
-    return render(request, 'profile.html', {'userprofile': userprofile, 'selecteduser': user, 'form': form})
+	
+    sandwich_list = Sandwich.objects.filter(maker = userprofile).order_by("-rating")[:5]
+    return render(request, 'profile.html', {'userprofile': userprofile, 'selecteduser': user, 'form': form, 'sandwiches':sandwich_list})
 	
 
 
