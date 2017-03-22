@@ -35,8 +35,11 @@ Top Fives Sandwiches:<br>
 	<a href ="/SandwichClub_app/sandwich/{{sandwich.sid}}" >{{ sandwich.title }}</a><br>
 {% endfor %}
 <div>
-	
-
+	<a href = "{% url 'usersSandwiches' selecteduser.username %}">All sandwiches</a>
+	Settings:<br>
+	<p>
+		<a href = "/accounts/password/change">Change password</a>
+	</p>
 </div>
 <div id="edit_profile"></div>
 {% endblock %}

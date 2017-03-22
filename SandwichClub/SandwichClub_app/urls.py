@@ -13,6 +13,7 @@ urlpatterns = [
         url(r'^latest/$', views.latest, name='latest'),
 	#url(r'^register_profile/$', views.register_profile, name='register_profile'),
 	url(r'^profile/(?P<username>[\w\-]+)/$', views.profile, name='profile'),
+	url(r'^usersSandwiches/(?P<username>[\w\-]+)/$', views.usersSandwiches, name='usersSandwiches'),
 	url(r'^create_sandwich/$', views.create_sandwich, name='create_sandwich'),
 	url(r'^sandwich/(?P<sid>[\w\-]+)$', views.sandwich, name='sandwich'),
 ]

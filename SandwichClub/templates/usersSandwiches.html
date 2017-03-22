@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}{{ selecteduser.username }}'s Sandwiches{% endblock %}
+
+{% block body_block %}
+<h1>{{selecteduser.username}}'s Sandwiches</h1>
+{% for sandwich in sandwiches %}
+	<a href ="/SandwichClub_app/sandwich/{{sandwich.sid}}" >{{ sandwich.title }}</a><br>
+{% endfor %}
+{% endblock %}
