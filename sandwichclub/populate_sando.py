@@ -1,15 +1,15 @@
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 					  'SandwichClub.settings')
-						
+
 import django
 import random
 django.setup()
 from SandwichClub_app.models import Sandwich, UserProfile, User
-	
+
 def populate():
-	
-	
+
+
 	users =[
 	{"username":"SandwichGuru",
 	"website":"http://guru.hu/webshop.aspx"},
@@ -24,61 +24,72 @@ def populate():
 	]
 	sandwiches=[
 	{"title" : "Triple-decker steak sandwich",
-	"description":"The king of sandwiches, this meaty skyscraper is a Ramsay gastro classic, perfect with a glass of peppery Pinotage",
-	"recipe":"bread,mayonnaise,garlic,lettuce,beef,onion,beef,tomato,beef,bread"},
-	{"title" : "Salt beef club",
-	"description":"An indulgent solo supper of a layered sandwich with sliced beef and creamy dressing ",
-	"recipe":"bread,oliveoil,mayonnaise,mustard,chive,avocado,lettuce,beef,bread"},
+	"description":"The king of sandwiches, this meaty skyscraper is a Ramsay gastro classic, perfect with a glass of Black Peppery Pinotage",
+	"recipe":"Bread,Mayonnaise,Garlic,Lettuce,Beef,Onion,Beef,Tomato,Beef,Bread",
+	"picture":"tripledeckerbeef.jpg"},
+	{"title" : "Salt Beef club",
+	"description":"An indulgent solo supper of a layered sandwich with sliced Beef and creamy dressing ",
+	"recipe":"Bread,Olive Oil,Mayonnaise,Mustard,Chive,Avocado,Lettuce,Beef,Bread",
+	"picture":"saltbeefclub.jpg"},
 	{"title" : "BLT - Bacon Lettuce Tomato",
 	"description":"Nothing fancy, just delicious - this is the definitive recipe for a no-nonsense Bacon, Lettuce and Tomato sandwich.",
-	"recipe":"bread,lettuce,tomato,bacon,mayonnaise,bread"},
-	{"title" : "Best-ever crab sandwich",
-	"description":"A classic crab sandwich made a bit more substantial with a few of Barney's favourite flavours",
-	"recipe":"bread,mayonnaise,ketchup,mustard,pepper,crab,bread"},
+	"recipe":"Bread,Lettuce,Tomato,Bacon,Mayonnaise,Bread",
+	"picture":"blt.jpg"},
+	{"title" : "Best-ever Crab sandwich",
+	"description":"A classic Crab sandwich made a bit more substantial with a few of Barney's favourite flavours",
+	"recipe":"Bread,Mayonnaise,Ketchup,Mustard,Black Pepper,Crab,Bread",
+	"picture":"bestCrab.jpg"},
 	{"title" : "Green club sandwich",
 	"description":"This healthy sandwich is packed full of goodness to keep you going until dinner",
-	"recipe":"bread,houmous,avocado,tomato,bread"},
+	"recipe":"Bread,Houmous,Avocado,Tomato,Bread",
+	"picture":"greenclub.jpg"},
 	{"title" : "Camembert sandwich",
 	"description":"A cheese sandwich that is anything but ordinary - oozing with camembert and topped with cranberry sauce to give it a Christmas kick",
-	"recipe":"bread,brie,cranberrysauce,vinegar,butter,bread"},
+	"recipe":"Bread,Brie,Cranberry Sauce,Vinegar,Butter,Bread",
+	"picture":"camembert.jpg"},
 	{"title" : "Roast Pork and Pickled Cucumber Sandwich",
-	"description":"Make quick pickles by combining cucumber, vinegar, oil, brown sugar, salt, and pepper; they give the sandwich an extra zing",
-	"recipe":"bread,pickle,porkloin,pepper,mayonnaise,bread"},
+	"description":"Make quick Pickles by combining cucumber, Vinegar, oil, brown sugar, salt, and Black Pepper; they give the sandwich an extra zing",
+	"recipe":"Bread,Pickle,Pork Loin,Black Pepper,Mayonnaise,Bread",
+	"picture":"roastporkcucumber.jpg"},
 	{"title" : "Open prawn cocktail sandwich",
 	"description":"A lighter version of the classic prawn cocktail, treat yourself to this satisfying yet low-fat lunch",
-	"recipe":"bread,prawn,cucumber,cherrytomato,lemon,dill,ketchup,mayonnaise,bread"},
+	"recipe":"Bread,Prawn,Cucumber,Tomato,Lemon,Dill,Ketchup,Mayonnaise,Bread",
+	"picture":"openprawn.jpg"},
 	{"title" : "Club sandwich",
 	"description":"This layered sandwich, a favourite of gastro-pubs across the country, makes a tasty meal for one",
-	"recipe":"bread,bacon,chicken,salad,boiledegg,tomato,mayonnaise,bread"},
-	{"title" : "Turkey & bacon club",
+	"recipe":"Bread,Bacon,Chicken,Salad,Boiled Egg,Tomato,Mayonnaise,Bread",
+	"picture":"club-sandwich.jpg"},
+	{"title" : "Turkey & Bacon club",
 	"description":"Satisfy your hunger with this tasty and hearty club sandwich, perfect for weekend breakfast",
-	"recipe":"bread,bacon,turkey,butter,mayonnaise,mustard,lettuce,avocado,bread"},]
-	
-	
+	"recipe":"Bread,Bacon,Turkey,Butter,Mayonnaise,Mustard,Lettuce,Avocado,Bread",
+	"picture":"turkeybaconclub.jpg"},]
+
+
 	users2 = []
 	for usar in users:
 		users2.append(add_user(usar["username"],usar["website"]))
-	
+
 	for sando in sandwiches:
 		i = random.randint(0, len(users2)-1)
 		r = random.randint(0,5)
-		add_sando(sando['title'],sando['description'],sando['recipe'], users2[i], r)
-		
+		add_sando(sando['title'],sando['description'],sando['recipe'],sando['picture'], users2[i], r)
+
 	#for uzar in UserProfile.objects.all():
 	#	print("- {0}".format(str(uzar)))
-		
+
 	#for sandowitch in Sandwich.objects.all():
 	#	print("- {0}".format(str(sandowitch)))
-		
-def add_sando(title,description,recipe,maker,rating):
+
+def add_sando(title,description,recipe,picture,maker,rating):
 	#print(title, description, recipe, maker)
 	s = Sandwich.objects.get_or_create(title = title, maker = maker)[0]
 	s.description = description
 	s.recipe = recipe
 	s.rating = rating
+	s.picture = picture
 	s.save()
 	return s
-	
+
 def add_user(username,website):
 	user = User.objects.get_or_create(username = username)[0]
 	user.save()
@@ -89,7 +100,7 @@ def add_user(username,website):
 	#print (u.website)
 	u.save()
 	return u
-	
+
 if __name__ == '__main__':
 	print('Starting population script...')
 	populate()

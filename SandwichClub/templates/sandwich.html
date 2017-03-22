@@ -19,27 +19,27 @@
         <br /><br />
     </div>
 {% else %}
-    <div> <!-- contains the main body of the sandwich -->
-        <div id="sandwich-info">
-            <div id="sandwich-title-desc">
-                <h2>{{ sandwich.title }} <span id="rating">{{ sandwich.rating }}</span></h2>
+    <div class="flex-container"> <!-- contains the main body of the sandwich -->
+        <section class="content">
+            <div id="sandwich-info">
+                <div id="sandwich-title-desc">
+                    <h2>{{ sandwich.title }} <span id="rating">{{ sandwich.rating }}</span></h2>
+                    <hr/>
+                    <p>{{ sandwich.description }}</p>
+                </div>
                 <hr/>
-                <p>{{ sandwich.description }}</p>
+                <img id="sandwich_photo" src="../../media/sandwich_images/{{ sandwich.picture }}" alt="Sandwich photo" />
             </div>
-            <hr/>
-            <div id="sandwich_photos">
-                {% if sandwich.picture %}
-                    <img src="../../media/{{ sandwich.picture }}" alt="Sandwich photo" />
-                {% endif %}
+            <div id="sandwich-recipe">
+                <span id="recipe">{{ sandwich.recipe }}</span>
             </div>
-        </div>
-        <div id="sandwich-recipe" style="display:inline-block;width:38%;height:500px;vertical-align:top">
-            <span id="recipe">{{ sandwich.recipe }}</span>
-        </div>
-    </div>
-    <hr />
-    <div id="comments" style="min-height:100px;width:100%;">
-        !!Comments Go Here!!
+            <hr />
+        </section>
+        <section class="content">
+            <div id="comments">
+                !!Comments Go Here!!
+            </div>
+        </section>
     </div>
 {% endif %}
 {% endblock %}

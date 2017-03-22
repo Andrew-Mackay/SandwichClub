@@ -41,7 +41,7 @@ class Sandwich(models.Model):
 	recipe = models.CharField(max_length=100)
 
 
-	picture = models.ImageField(upload_to='sandwich_images',blank=False)
+	picture = models.ImageField(upload_to='sandwich_images',blank=False,default="default.jpg")
 	rating = models.IntegerField(default=3) #out of 5
 
 	#Date user created the sandwich used to get the latest sandwich
