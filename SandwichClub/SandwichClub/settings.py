@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'SandwichClub_app',
-	'registration', # add in the registration package
+    'registration', # add in the registration package
 ]
 
 MIDDLEWARE = [
