@@ -160,5 +160,12 @@ def profile(request, username):
     sandwich_list = Sandwich.objects.filter(maker = userprofile).order_by("-rating")[:5]
     return render(request, 'profile.html', {'userprofile': userprofile, 'selecteduser': user, 'form': form, 'sandwiches':sandwich_list})
 	
-
+def usersSandwiches(request, username):
+	try:
+		user = User.objects.get(username=username)
+	except User.DoesNotExist:
+		return redirect('index')
+	userprofile = UserProfile.objects.get_or_create(user=user)[0]
+	sandwich_list = Sandwich.objects.filter(maker = userprofile).order_by("-rating")
+	return render(request, 'usersSandwiches.html', {'sandwiches':sandwich_list, 'selecteduser':user})
 
