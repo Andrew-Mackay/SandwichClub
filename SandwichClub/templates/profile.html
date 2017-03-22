@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% load staticfiles %}
-
 {% block title %}{{ selecteduser.username }} Profile{% endblock %}
 
 {% block body_block %}
+<div>
 <h1>{{selecteduser.username}} Profile</h1>
     {% if userprofile.picture %}
     <img src="{{ MEDIA_URL }}{{userprofile.picture }}"
@@ -14,32 +14,31 @@
     {% else %}
     <img src="{{ MEDIA_URL}}profile_images/defaultImage.png" img width="300" height="300" alt="{{user.username}}"/>
     {% endif %}
-
 <br/>
 
-<div>
 	{% if selecteduser.username == user.username %}
 		<form method="post" action="." enctype="multipart/form-data">
 			{% csrf_token %}
 			{{ form.as_p }}
 			<input type="submit" value="Update" />
 		</form>
+		<a href = "/accounts/password/change">Change password</a>
 	{% else %}
 		<p><strong>Website:</strong> <a href="{{userprofile.website}}">
 		    {{userprofile.website}}</a></p>
 	{% endif %}
+	<br>
+	<a href = "{% url 'usersSandwiches' selecteduser.username %}">All sandwiches</a>
 </div>
-<br>
-Top Fives Sandwiches:<br>
+
+<hr>
+<div id="top5">
+Users Top Five Sandwiches:<br>
 {% for sandwich in sandwiches %}
 	<a href ="/SandwichClub_app/sandwich/{{sandwich.sid}}" >{{ sandwich.title }}</a><br>
 {% endfor %}
-<div>
-	<a href = "{% url 'usersSandwiches' selecteduser.username %}">All sandwiches</a>
-	Settings:<br>
-	<p>
-		<a href = "/accounts/password/change">Change password</a>
-	</p>
 </div>
+	
+
 <div id="edit_profile"></div>
 {% endblock %}
