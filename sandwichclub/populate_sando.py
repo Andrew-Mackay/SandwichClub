@@ -53,7 +53,7 @@ def populate():
 	"picture":"roastporkcucumber.jpg"},
 	{"title" : "Open prawn cocktail sandwich",
 	"description":"A lighter version of the classic prawn cocktail, treat yourself to this satisfying yet low-fat lunch",
-	"recipe":"Bread,Prawn,Cucumber,Cherry Tomato,Lemon,Dill,Ketchup,Mayonnaise,Bread",
+	"recipe":"Bread,Prawn,Cucumber,Tomato,Lemon,Dill,Ketchup,Mayonnaise,Bread",
 	"picture":"openprawn.jpg"},
 	{"title" : "Club sandwich",
 	"description":"This layered sandwich, a favourite of gastro-pubs across the country, makes a tasty meal for one",
