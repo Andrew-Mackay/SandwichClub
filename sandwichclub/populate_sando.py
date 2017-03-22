@@ -70,18 +70,12 @@ def populate():
 		users2.append(add_user(usar["username"],usar["website"]))
 
 	for sando in sandwiches:
-		i = random.randint(0, len(users2)-1)
-		r = random.randint(0,5)
+		i = random.randint(0, len(users2)-1) # used to select random user to assign sandwich to
+		r = random.randint(0,5) # used to provide sandwiches with a randomized rating
 		add_sando(sando['title'],sando['description'],sando['recipe'],sando['picture'], users2[i], r)
 
-	#for uzar in UserProfile.objects.all():
-	#	print("- {0}".format(str(uzar)))
-
-	#for sandowitch in Sandwich.objects.all():
-	#	print("- {0}".format(str(sandowitch)))
 
 def add_sando(title,description,recipe,picture,maker,rating):
-	#print(title, description, recipe, maker)
 	s = Sandwich.objects.get_or_create(title = title, maker = maker)[0]
 	s.description = description
 	s.recipe = recipe
@@ -92,15 +86,14 @@ def add_sando(title,description,recipe,picture,maker,rating):
 
 def add_user(username,website):
 	user = User.objects.get_or_create(username = username)[0]
+	user.set_password("12345qwerty")
 	user.save()
-	#print(user)
 	u = UserProfile.objects.get_or_create(user= user)[0]
-	#print(u)
 	u.website = website
-	#print (u.website)
 	u.save()
 	return u
 
 if __name__ == '__main__':
 	print('Starting population script...')
 	populate()
+	print('Population complete.')
