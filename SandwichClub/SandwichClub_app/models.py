@@ -35,7 +35,7 @@ class Sandwich(models.Model):
 	description = models.CharField(max_length=2000) #length is arbitrary
 
 	# Recipe of the sandwich, stored as a string of comma
-	# separated ingredients (without any spaces).
+	# separated 2-character ingredients (without any spaces).
 	# Ex: "br,lt,tm,bc,ma,br" is, from bottom to top,
 	# bread, lettuce, tomato, bacon, mayonnaise, bread
 	recipe = models.CharField(max_length=100)
@@ -47,7 +47,7 @@ class Sandwich(models.Model):
 	#Date user created the sandwich used to get the latest sandwich
 	created =  models.DateTimeField(default=timezone.now)
 
-
+	#currently unused
 	def title_slug(self):
 		return self.title.lower().replace(" ","-")
 
