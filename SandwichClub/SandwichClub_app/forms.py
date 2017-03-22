@@ -10,9 +10,6 @@ class UserProfileForm(forms.ModelForm):
         exclude = ('user',)
 
 class SandwichForm(forms.ModelForm):
-    title = forms.CharField(required=True)
-    description = forms.CharField(required=False)
-
     class Meta:
         model = Sandwich
         exclude = ('sid','rating','created','maker')

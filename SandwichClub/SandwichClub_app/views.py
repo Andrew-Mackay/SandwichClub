@@ -36,18 +36,19 @@ def create_sandwich(request):
             new_sandwich = form.save(commit=False)
             #user = request.user
             userprofile = UserProfile.objects.get(user=request.user)
-            print userprofile
             new_sandwich.maker = userprofile
-            #print new_sandwich
-            print new_sandwich.maker
+            #save image
+            new_sandwich.picture = form.cleaned_data['picture']
             new_sandwich.save()
+
+            #ns = Sandwich(title=new_sandwich.title,description=new_sandwich.description,picture=new_sandwich.picture,recipe=new_sandwich.recipe)
+            #ns.save()
             return redirect('sandwich',new_sandwich.sid)
         else:
             print(form.errors)
 
     context_dict = {'form':form}
     return render(request, 'create_sandwich.html', context=context_dict)
-
 
 def sandwich(request,sid):
     try:
@@ -68,7 +69,7 @@ def search(request):
 
     paginator = Paginator(sandwich_list, 5) # Show 5 sandos per page
     page = request.GET.get('page')
-    
+
     try:
         sandwich = paginator.page(page)
     except PageNotAnInteger:
@@ -79,7 +80,7 @@ def search(request):
         sandwich = paginator.page(paginator.num_pages)
 
     context_dict = {'sandwiches':sandwich}
-	
+
     return render(request, 'search.html', context=context_dict)
 
 def top_ten(request):
@@ -114,7 +115,7 @@ def more(request):
 
 def contact(request):
     return render(request, 'contact.html')
-    
+
 '''
 @login_required
 def register_profile(request):
@@ -138,7 +139,7 @@ class MyRegistrationView(RegistrationView):
 	def get_success_url(self, user):
 		return reverse('profile', kwargs ={'username': str(user)})
 
-		
+
 #@login_required
 def profile(request, username):
     try:
@@ -156,9 +157,10 @@ def profile(request, username):
             return redirect('profile', user.username)
         else:
             print(form.errors)
-	
+
     sandwich_list = Sandwich.objects.filter(maker = userprofile).order_by("-rating")[:5]
     return render(request, 'profile.html', {'userprofile': userprofile, 'selecteduser': user, 'form': form, 'sandwiches':sandwich_list})
+
 	
 def usersSandwiches(request, username):
 	try:
