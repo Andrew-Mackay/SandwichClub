@@ -4,11 +4,9 @@
 var makeIngredient = function(ingredient){
     var block = document.createElement("div");
     block.className = "ingredient";
-
-    var img = document.createElement("img");
-    img.setAttribute("src","../../static/img/"+slug(ingredient)+".jpg");
-    img.setAttribute("alt",ingredient);
-    block.appendChild(img);
+    block.style.backgroundImage = "url('../../static/img/"+slug(ingredient)+".jpg')";
+    block.style.backgroundSize = "100% 100%";
+    block.appendChild(document.createTextNode(ingredient));
 
     document.getElementById("sandwich-recipe").appendChild(block);
 };
