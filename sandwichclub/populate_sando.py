@@ -64,14 +64,14 @@ def populate():
 		r = random.randint(0,5)
 		add_sando(sando['title'],sando['description'],sando['recipe'], users2[i], r)
 		
-	for uzar in UserProfile.objects.all():
-		print("- {0}".format(str(uzar)))
+	#for uzar in UserProfile.objects.all():
+	#	print("- {0}".format(str(uzar)))
 		
-	for sandowitch in Sandwich.objects.all():
-		print("- {0}".format(str(sandowitch)))
+	#for sandowitch in Sandwich.objects.all():
+	#	print("- {0}".format(str(sandowitch)))
 		
 def add_sando(title,description,recipe,maker,rating):
-	print(title, description, recipe, maker)
+	#print(title, description, recipe, maker)
 	s = Sandwich.objects.get_or_create(title = title, maker = maker)[0]
 	s.description = description
 	s.recipe = recipe
@@ -81,6 +81,7 @@ def add_sando(title,description,recipe,maker,rating):
 	
 def add_user(username,website):
 	user = User.objects.get_or_create(username = username)[0]
+	user.save()
 	#print(user)
 	u = UserProfile.objects.get_or_create(user= user)[0]
 	#print(u)
