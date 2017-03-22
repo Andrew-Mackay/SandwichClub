@@ -14,7 +14,7 @@ class UserProfile(models.Model):
 	website = models.URLField(blank=True)
 	picture = models.ImageField(upload_to='profile_images', blank=True)
 
-	# Override the __unicode__() method to return out something meaningful!
+	# Override the __unicode__() method to return out something meaningful.
 	# As using Python 2.7 defined __unicode__ too.
 	def __str__(self):
 		return self.user.username

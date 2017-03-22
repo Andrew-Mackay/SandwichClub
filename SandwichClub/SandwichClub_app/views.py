@@ -23,8 +23,6 @@ def index(request):
     response = render(request, 'index.html', context=context_dict)
     return response
 
-def login(request):
-	return HttpResponse("Login page")
 
 @login_required
 def create_sandwich(request):
@@ -101,9 +99,6 @@ def randomsando(request):
 
     return redirect('sandwich', sid = randid)
 
-def register(request):
-	return HttpResponse("Registration page")
-
 def categories(request):
 	return HttpResponse("Categories page")
 
@@ -116,31 +111,12 @@ def more(request):
 def contact(request):
     return render(request, 'contact.html')
 
-'''
-@login_required
-def register_profile(request):
-    form = UserProfileForm()
 
-    if request.method == 'POST':
-        form = UserProfileForm(request.POST, request.FILES)
-        if form.is_valid():
-            user_profile = form.save(commit=False)
-            user_profile.user = request.user
-            user_profile.save()
-            return redirect('index')
-        else:
-            print(form.errors)
-
-    context_dict = {'form':form}
-
-    return render(request, 'profile_registration.html', context_dict)
-'''
 class MyRegistrationView(RegistrationView):
 	def get_success_url(self, user):
 		return reverse('profile', kwargs ={'username': str(user)})
 
 
-#@login_required
 def profile(request, username):
     try:
         user = User.objects.get(username=username)
@@ -158,7 +134,7 @@ def profile(request, username):
         else:
             print(form.errors)
 
-    sandwich_list = Sandwich.objects.filter(maker = userprofile).order_by("-rating")[:5]
+    sandwich_list = Sandwich.objects.filter(maker = userprofile).order_by("-rating")[:5] # list of top 5 sandwiches
     return render(request, 'profile.html', {'userprofile': userprofile, 'selecteduser': user, 'form': form, 'sandwiches':sandwich_list})
 
 	
@@ -168,6 +144,6 @@ def usersSandwiches(request, username):
 	except User.DoesNotExist:
 		return redirect('index')
 	userprofile = UserProfile.objects.get_or_create(user=user)[0]
-	sandwich_list = Sandwich.objects.filter(maker = userprofile).order_by("-rating")
+	sandwich_list = Sandwich.objects.filter(maker = userprofile).order_by("-rating") # list of users sandwiches ordered by rating
 	return render(request, 'usersSandwiches.html', {'sandwiches':sandwich_list, 'selecteduser':user})
 
