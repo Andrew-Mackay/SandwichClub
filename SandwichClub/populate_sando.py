@@ -38,7 +38,7 @@ def populate():
 	{"title" : "Best-ever Crab sandwich",
 	"description":"A classic Crab sandwich made a bit more substantial with a few of Barney's favourite flavours",
 	"recipe":"Bread,Mayonnaise,Ketchup,Mustard,Black Pepper,Crab,Bread",
-	"picture":"/sandwich_images/bestCrab.jpg"},
+	"picture":"/sandwich_images/bestcrab.jpg"},
 	{"title" : "Green club sandwich",
 	"description":"This healthy sandwich is packed full of goodness to keep you going until dinner",
 	"recipe":"Bread,Houmous,Avocado,Tomato,Bread",
