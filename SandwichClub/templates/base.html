@@ -37,16 +37,16 @@
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
+            <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sandwiches</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="/SandwichClub_app/top_ten/">Top 10</a>
-              <a class="dropdown-item" href="/SandwichClub_app/latest/">Latest</a>
-			  <a class="dropdown-item" href="/SandwichClub_app/random/">Random</a>
-              <a class="dropdown-item" href="/SandwichClub_app/more/">More...</a>
+              <a class="dropdown-item" href="{% url 'top_ten' %}">Top 10</a>
+              <a class="dropdown-item" href="{% url 'latest' %}">Latest</a>
+			  <a class="dropdown-item" href="{% url 'random' %}">Random</a>
+              <a class="dropdown-item" href="{% url 'more' %}">More...</a>
             </div>
             </li>
 
@@ -91,17 +91,22 @@
         <ul class="footerLinks">
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/SandwichClub_app/contact">Contact Us</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
 
         </ul>
         <ul>
-            <li><a href="/about">About</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
 			<li><a href="{% url 'advertising' %}">Advertising</a></li>
 			
         </ul>
         <ul>
             <li><a href="{% url 'FAQ' %}">FAQ</a></li>
             <li><a href="/">Careers</a></li>
+	
+        </ul>
+        <ul>
+            <li><a href="/">FAQ</a></li>
+            <li><a href="{% url 'careers' %}">Careers</a></li>
 
         </ul>
         <ul>
