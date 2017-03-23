@@ -15,13 +15,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 def index(request):
-    context_dict = {}
-    """ context needed (?)
-        Sandwich of the week
-        popular sandwiches/users/idk
-    """
-    response = render(request, 'index.html', context=context_dict)
-    return response
+    ranking = Sandwich.objects.order_by('-rating')[:5]
+    context_dict= {'rankings': ranking}
+
+    return render(request, 'index.html', context=context_dict)
 
 
 @login_required

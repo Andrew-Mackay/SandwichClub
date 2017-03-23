@@ -10,7 +10,6 @@
 <body>
 <div class=crop>
 	<img src="{% static 'img/SandwichCover.jpg' %}" alt="Sandwich Cover Art">
-	
 </div>
 
 <div id="HomeContent">
@@ -23,18 +22,18 @@
 		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 		</form>
 	</div>
-	<p id="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-	Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet 
-	quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+	<p id="description">Welcome to SandwichClub, the premier online destination for all your sandwich needs. Browse through user submissions to find the latest and greatest sandwiches. Register now to submit your own creations and rate other submissions.</p>
 	<hr />
-	<p id="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-	Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet 
-	quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-	Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet 
-	quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-	Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet 
-	quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
 	
 </div>
+	<div class=usercontent style>
+		<h3 style=>Gallery</h3>
+		<ul style>
+			{% for sandwich in rankings%}
+			<li style><div class=picture style><a href="/SandwichClub_app/sandwich/{{sandwich.sid}}"><img style src="../../media/sandwich_images/{{ sandwich.picture }}" alt="Sandwich photo" /></div></a></li>
+			{% endfor %}
+		</ul>
+	</div>
 <body>
 {% endblock %}

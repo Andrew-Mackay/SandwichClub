@@ -1,0 +1,31 @@
+.profile{
+	min-height: 550px;
+	margin-bottom: auto;
+	overflow:hidden;
+	padding-bottom: 25px;
+}
+.details{
+	margin:auto;
+	float: left;
+	background-color: #efefef;
+	margin-right: 40px;
+	padding:10px;	
+	padding-left: 25px;
+	padding-right:25px;
+	width: 30%;
+	min-width:313px;
+	min-height: 550px;
+	padding-bottom: 25px;
+}
+.top5{
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top:10px;
+	padding-bottom: 25px;
+	float:left;
+	background-color:#f7f7f7;	
+	width: 66%;
+	min-height: 550px;
+	overflow: hidden;
+	overflow-y: scroll;
+}

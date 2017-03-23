@@ -3,17 +3,24 @@
 {% load staticfiles %}
 {% block title %}{{ selecteduser.username }} Profile{% endblock %}
 
+{% block includes %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/profileStyle.css' %}"/>
+{% endblock %}
+
 {% block body_block %}
-<div>
-<h1>{{selecteduser.username}} Profile</h1>
+<div class=profile>
+<div class=details>
+<h2>{{selecteduser.username}}'s Profile</h2>
     {% if userprofile.picture %}
+    <hr>
     <img src="{{ MEDIA_URL }}{{userprofile.picture }}"
-	 width="300"
-	 height="300"
+	 width="200"
+	 height="200"
 	 alt="{{selecteduser.username}}" />
     {% else %}
     <img src="{{ MEDIA_URL}}profile_images/defaultImage.png" img width="300" height="300" alt="{{user.username}}"/>
     {% endif %}
+    <br>
 <br/>
 
 	{% if selecteduser.username == user.username %}
@@ -31,14 +38,19 @@
 	<a href = "{% url 'usersSandwiches' selecteduser.username %}">All sandwiches</a>
 </div>
 
+<div class="top5">
+<h2>Your Top Five Sandwiches:</h2>
 <hr>
-<div id="top5">
-Users Top Five Sandwiches:<br>
+<ol>
 {% for sandwich in sandwiches %}
-	<a href ="/SandwichClub_app/sandwich/{{sandwich.sid}}" >{{ sandwich.title }}</a><br>
-{% endfor %}
-</div>
 	
+	<li><a href ="/SandwichClub_app/sandwich/{{sandwich.sid}}" >{{ sandwich.title }}</a></li>
+	<p>{{ sandwich.description }}</p>
+	<br>
+{% endfor %}
+</ol>
+</div>
+</div>
 
 <div id="edit_profile"></div>
 {% endblock %}
