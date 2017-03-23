@@ -147,3 +147,5 @@ def usersSandwiches(request, username):
 	sandwich_list = Sandwich.objects.filter(maker = userprofile).order_by("-rating") # list of users sandwiches ordered by rating
 	return render(request, 'usersSandwiches.html', {'sandwiches':sandwich_list, 'selecteduser':user})
 
+def careers(request):
+	return render(request, 'careers.html')

@@ -7,11 +7,12 @@ urlpatterns = [
 	url(r'^more/', views.more, name='more'),
 	url(r'^contact/', views.contact, name='contact'),
 	url(r'^search/$', views.search, name='search'),
-	url(r'^random/$', views.randomsando),
+	url(r'^random/$', views.randomsando, name='random'),
 	url(r'^top_ten/$', views.top_ten, name='top_ten'),
 	url(r'^latest/$', views.latest, name='latest'),
 	url(r'^profile/(?P<username>[\w\-]+)/$', views.profile, name='profile'),
 	url(r'^usersSandwiches/(?P<username>[\w\-]+)/$', views.usersSandwiches, name='usersSandwiches'),
 	url(r'^create_sandwich/$', views.create_sandwich, name='create_sandwich'),
 	url(r'^sandwich/(?P<sid>[\w\-]+)$', views.sandwich, name='sandwich'),
+	url(r'^Careers/$', views.careers, name='careers'),
 ]
