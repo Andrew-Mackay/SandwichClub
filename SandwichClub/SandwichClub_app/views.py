@@ -111,7 +111,15 @@ def more(request):
 def contact(request):
     return render(request, 'contact.html')
 
+def FAQ(request):
+	return render(request, 'FAQ.html')
 
+def termuse(request):
+	return render(request, 'termuse.html')
+	
+def advertising(request):
+	return render(request, 'advertising.html')
+	
 class MyRegistrationView(RegistrationView):
 	def get_success_url(self, user):
 		return reverse('profile', kwargs ={'username': str(user)})
