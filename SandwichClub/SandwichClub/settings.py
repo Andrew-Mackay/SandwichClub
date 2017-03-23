@@ -30,9 +30,9 @@ MEDIA_URL ='/media/'
 SECRET_KEY = 'j938#qk_0$wzu49=5b$w#9vnu-86klk05=k^p)*#$ic2j$r-&d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['sandwichclub.pythonanywhere.com','127.0.0.1']
+ALLOWED_HOSTS = ['sandwichclub.pythonanywhere.com', 'localhost']
 
 
 # Application definition
