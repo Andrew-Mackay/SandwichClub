@@ -31,7 +31,7 @@
 		<h3 style=>Gallery</h3>
 		<ul style>
 			{% for sandwich in rankings%}
-			<li style><div class=picture style><a href="/SandwichClub_app/sandwich/{{sandwich.sid}}"><img style src="../../media/sandwich_images/{{ sandwich.picture }}" alt="Sandwich photo" /></div></a></li>
+			<li style><div class=picture style><a href="/SandwichClub_app/sandwich/{{sandwich.sid}}"><img style src="{{ MEDIA_URL }}{{ sandwich.picture }}" alt="Sandwich photo" /></div></a></li>
 			{% endfor %}
 		</ul>
 	</div>
