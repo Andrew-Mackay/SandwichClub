@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
+{% block includes %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/sandwich.css' %}"/>
+<script src="{% static 'js/sandwich.js' %}"></script>
+{% endblock %}
 
 {% block title_block %}
 Create Sandwich - Sandwich Club
@@ -6,13 +12,26 @@ Create Sandwich - Sandwich Club
 
 {% block body_block %}
     <h2 style="text-align:center">Create a Sandwich</h2>
-    <form method="post" action="." enctype="multipart/form-data">
-        {% csrf_token %}
-        <!-- <input type="text" name="title" placeholder="Title" required><br /><br /> -->
-        <!-- <textarea rows="4" cols="30" name="description" placeholder="Description"></textarea><br /> -->
-        <!-- <input type="text" name="recipe" placeholder="Recipe string (temp)" required><br /><br /> -->
-        <!-- <input type="submit" value="Submit" /> -->
-        {{ form.as_p }}
-        <input type="submit" value="Submit" />
-    </form>
+    <div class="flex-container"> <!-- contains the main body of the sandwich -->
+        <form method="post" action="." enctype="multipart/form-data">
+            {% csrf_token %}
+            <section class="content">
+                <div id="sandwich-info">
+                    <div id="sandwich-title-desc">
+                        <input id="id_title" maxlength="100" name="title" type="text" placeholder="Title" required style="width:100%;height:50px;text-align:center;font-size:160%;"/>
+                        <hr/>
+                        <textarea id="id_description" maxlength="2000" name="description" type="text" placeholder="Description" required style="width:100%;height:200px;"></textarea>
+                    </div>
+                    <hr/>
+                    <p style="width:100%;text-align:center;"><label for="id_picture">Picture:</label> <input id="id_picture" name="picture" type="file" /></p>
+                    <input type="submit" value="Submit" />
+                </div>
+                <div id="sandwich-recipe" create="true">
+                    <input id="id_recipe" maxlength="100" name="recipe" type="text" style="visibility:hidden;width:0px;" required />
+                    <input id="recipe_input_box" maxlength="30" type="text" placeholder="Ingredient" /><input type="button" value="Add Ingredient" id="ing_submit"/>
+                </div>
+                <hr />
+            </section>
+        </form>
+    </div>
 {% endblock %}
