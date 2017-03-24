@@ -7,10 +7,10 @@ from django.test import Client
 # used for setup, populates database
 def runBasicSetup(self):
 	try:
-		from populate_sando import populate
+		from population_script import populate
 		populate()
 	except ImportError:
-		print('The module populate_sando does not exist')
+		print('The module population_script does not exist')
 	except NameError:
 		print('The function populate() does not exist or is not correct')
 	except:
